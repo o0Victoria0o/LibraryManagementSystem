@@ -10,8 +10,8 @@ public class RandomBook extends ThisStuff{
         this.randomAuthor = randomAuthor;
     }
 
-    public String getTitle(){return randomTitle;} public void setrandomTitle(String title){this.title = title;}
-    public String getAuthor(){return randomAuthor;} public void setrandomAuthor(String author){this.author = author;}
+    public String getRandomTitle(){return randomTitle;} public void setRandomTitle(String randomTitle){this.randomTitle = randomTitle;}
+    public String getRandomAuthor(){return randomAuthor;} public void setRandomAuthor(String randomAuthor){this.randomAuthor = randomAuthor;}
 
     @Override public int getBorrowDuration() {return 7;}
     @Override public String getDisplayName() {return title;}
