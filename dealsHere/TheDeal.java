@@ -1,8 +1,8 @@
 package dealsHere;
 
+import java.time.LocalDate;
 import theGuy.ThisGuy;
 import theStuff.ThisStuff;
-import java.time.LocalDate;
 
 public class TheDeal {
     private ThisGuy guy;
