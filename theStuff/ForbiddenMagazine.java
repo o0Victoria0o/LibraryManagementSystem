@@ -12,7 +12,7 @@ public class ForbiddenMagazine extends ThisStuff {
     public void setMagazineIssue(String magazineIssue){this.magazineIssue = magazineIssue;}
 
     @Override public int getBorrowDuration() {return 0;}
-    @Override public String getDisplayName() {return magazineIssue;}
+    @Override public String getDisplayName() {return title;}
     @Override public String getType() {return "Magazine";}
 
 }
