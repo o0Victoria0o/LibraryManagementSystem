@@ -14,6 +14,6 @@ public class RandomBook extends ThisStuff{
     public String getRandomAuthor(){return randomAuthor;} public void setRandomAuthor(String randomAuthor){this.randomAuthor = randomAuthor;}
 
     @Override public int getBorrowDuration() {return 7;}
-    @Override public String getDisplayName() {return randomTitle;}
+    @Override public String getDisplayName() {return title;}
     @Override public String getType() {return "Book";}
 }
