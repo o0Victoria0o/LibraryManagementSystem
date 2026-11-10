@@ -6,7 +6,7 @@ public class RandomBook extends ThisStuff{
 
     public RandomBook(String stuffId, String publisher, int yearPublished, int totalCopies, int availableCopies, String randomTitle, String randomAuthor) {
         super(stuffId, publisher, yearPublished, totalCopies, availableCopies);
-        this.title = title;
+        this.randomTitle = Title;
         this.author = author;
     }
 
