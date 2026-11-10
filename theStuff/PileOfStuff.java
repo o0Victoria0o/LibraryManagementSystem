@@ -32,8 +32,8 @@ public class PileOfStuff{
     public boolean removeThisStuff(String StuffId){
         ThisStuff stuff = findThisStuff(StuffId);
 
-            if (ThisStuff != null){
-                theStuff.remove(ThisStuff);
+            if (stuff != null){
+                theStuff.remove(stuff);
                 return true;
             }
         
