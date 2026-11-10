@@ -6,12 +6,12 @@ public class RandomBook extends ThisStuff{
 
     public RandomBook(String stuffId, String publisher, int yearPublished, int totalCopies, int availableCopies, String randomTitle, String randomAuthor) {
         super(stuffId, publisher, yearPublished, totalCopies, availableCopies);
-        this.randomTitle = Title;
-        this.author = author;
+        this.randomTitle = randomTitle;
+        this.randomAuthor = randomAuthor;
     }
 
-    public String getTitle(){return title;} public void setTitle(String title){this.title = title;}
-    public String getAuthor(){return author;} public void setAuthor(String author){this.author = author;}
+    public String getTitle(){return randomTitle;} public void setrandomTitle(String title){this.title = title;}
+    public String getAuthor(){return randomAuthor;} public void setrandomAuthor(String author){this.author = author;}
 
     @Override public int getBorrowDuration() {return 7;}
     @Override public String getDisplayName() {return title;}
