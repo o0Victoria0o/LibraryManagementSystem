@@ -10,7 +10,6 @@ import java.time.LocalDate;
 
 public class TheDeal {
     private ArrayList<TheDeal> transactions = new ArrayList<TheDeal>();
-
     public boolean borrowMaterial(ThisGuy guy, ThisStuff stuff) {
         if (guy == null){
             System.out.println("Borrower is not registered.");
@@ -57,14 +56,11 @@ public class TheDeal {
             if (d.getGuy().getGuyId().equals(guy.getGuyId())
             && t.getStuff().getStuffId().equals(stuff.getStuffId())
             && t.getDateReturned() == null){
-
             d.setDateReturned(LocalDate.now());
-
             if(LocalDate.now().isAfter(t.getDueDate())){
                 guy.setStrikes(guy,getStrikes()+1);
                 System.out.println("Late Return, 1 Strike Added");
             }
-
             stuff.setAvailableCopies(stuff.getAvailableCopies()+1);
             return true;
             }
@@ -72,7 +68,6 @@ public class TheDeal {
         System.out.println("No active borrower record for this material.");
         return false;
     }
-
     public void showBorrowerHistory(ThisGuy guy) {
         if (borrower == null){
             System.out.println("Borrower not registered.");
@@ -100,7 +95,6 @@ public class TheDeal {
     public List<TheDeal> getAllTransactions() {
         return new ArrayList<>(deals);
     }
-
     private void printTransaction(TheDeals d) {
         String returned;
         if (d.getDateReturned() == null){
