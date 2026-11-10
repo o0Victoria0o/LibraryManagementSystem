@@ -110,4 +110,5 @@ public class DealerGuy {
         + " | Due: " + d.getDueDate()
         + " | Returned: " + returned);
     }
+}
 

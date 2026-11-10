@@ -30,10 +30,10 @@ public class PileOfStuff{
 
 
     public boolean removeThisStuff(String StuffId){
-        Material ThisStuff = findThisStuff(StuffId);
+        ThisStuff thisStuff = findThisStuff(StuffId);
 
-            if (ThisStuff != null){
-                theStuff.remove(ThisStuff);
+            if (thisStuff != null){
+                theStuff.remove(thisStuff);
                 return true;
             }
         
