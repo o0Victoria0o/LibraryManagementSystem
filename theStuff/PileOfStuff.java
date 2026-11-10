@@ -21,7 +21,7 @@ public class PileOfStuff{
 
     public ThisStuff findThisStuff(String StuffId){
         for (ThisStuff s : theStuff){
-            if (m.getStuffId().equals(StuffId)){
+            if (s.getStuffId().equals(StuffId)){
                 return s;
             }
         }
