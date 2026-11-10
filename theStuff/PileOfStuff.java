@@ -11,7 +11,7 @@ public class PileOfStuff{
         if (ThisStuff == null){
             return false;
         }
-        if (findThisStuff(ThisStuff.getThisStuffId()) != null) {
+        if (findThisStuff(ThisStuff.getStuffId()) != null) {
             return false;
         }
 
@@ -19,9 +19,9 @@ public class PileOfStuff{
         return true;
     }
 
-    public ThisStuff findThisStuff(String ThisStuffId){
+    public ThisStuff findThisStuff(String StuffId){
         for (ThisStuff s : theStuff){
-            if (m.getThisStuffId().equals(ThisStuffId)){
+            if (m.getStuffId().equals(StuffId)){
                 return s;
             }
         }
@@ -29,8 +29,8 @@ public class PileOfStuff{
     }
 
 
-    public boolean removeThisStuff(String ThisStuffId){
-        Material ThisStuff = findThisStuff(ThisStuffId);
+    public boolean removeThisStuff(String StuffId){
+        Material ThisStuff = findThisStuff(StuffId);
 
             if (ThisStuff != null){
                 theStuff.remove(ThisStuff);
