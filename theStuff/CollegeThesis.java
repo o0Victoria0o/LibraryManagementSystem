@@ -1,10 +1,10 @@
 package theStuff;
 
-public class SadThesis extends ThisStuff{
+public class CollegeThesis extends ThisStuff{
     private String title;
     private String author;
 
-    public SadThesis(String stuffId, String publisher, int yearPublished, int totalCopies, int availableCopies, String title, String author) {
+    public CollegeThesis(String stuffId, String publisher, int yearPublished, int totalCopies, int availableCopies, String title, String author) {
         super(stuffId, publisher, yearPublished, totalCopies, availableCopies);
         this.title = title;
         this.author = author;
