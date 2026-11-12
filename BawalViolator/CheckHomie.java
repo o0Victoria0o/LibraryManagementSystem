@@ -1,4 +1,4 @@
-package BawalViolator;
+package bawalViolator;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
