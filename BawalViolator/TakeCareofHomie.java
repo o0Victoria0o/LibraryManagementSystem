@@ -22,6 +22,7 @@ import java.io.PrintWriter;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
+import java.util.ArrayList;
 
 public class FileHandling {
     private static final String BORROWERS_FILE = "documents/borrowers.txt";
@@ -39,4 +40,10 @@ public class FileHandling {
 }
 
 }
-public static void 
+public static void saveMaterials(PileOfStuff stuff) {
+    new File("data").mkdirs();
+
+    PrintWriter saveData = new PrintWriter(new FileWriter(MATERIALS_FILE));
+    for (Material material : manager.getAllTheStuff()){
+        saveData.println(stuff);
+    }
