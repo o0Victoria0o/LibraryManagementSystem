@@ -9,19 +9,19 @@ import theGuy.ThisGuy;
 import theStuff.PileOfStuff;
 import theStuff.ThisStuff;
 
-public class DealerMenu {
-    private DealerGuy dealer;
+public class DealersMenu {
+    private DealerGuy myDealer;
     private MultipleGuys myGuys;
     private PileOfStuff myPiles;
     private Scanner scan;
 
-    public DealerMenu(DealerGuy dealer, MultipleGuys myGuys, PileOfStuff myPiles, Scanner scan){
-        this.dealer = dealer;
+    public DealersMenu(DealerGuy myDealer, MultipleGuys myGuys, PileOfStuff myPiles, Scanner scan){
+        this.myDealer = myDealer;
         this.myGuys = myGuys;
         this.myPiles = myPiles;
         this.scan = scan;
     }
-    public void showMenu() {
+    public void showMenuDealer() {
         String YourPick =  " ";
         while (!YourPick.equals("6")) {
             System.out.println();
@@ -59,7 +59,7 @@ public class DealerMenu {
         ThisGuy guy = myGuys.checkMyGuy(guyId);
         ThisStuff stuff = myPiles.findThisStuff(stuffId);
         
-        boolean done = dealer.borrowMaterial(guy, stuff);
+        boolean done = myDealer.borrowMaterial(guy, stuff);
         if (done){
             System.out.println("Borrowed:" + stuff.getDisplayName());
             System.out.println("Borrow duration:" + stuff.getBorrowDuration() + "days(s)");
@@ -74,7 +74,7 @@ public class DealerMenu {
         ThisGuy guy = myGuys.checkMyGuy(guyId);
         ThisStuff stuff = myPiles.findThisStuff(stuffId);
 
-        boolean done = dealer.returnMaterial(guy, stuff);
+        boolean done = myDealer.returnMaterial(guy, stuff);
         if (done){
             System.out.println("Returned: " + stuff.getDisplayName());
         }
@@ -83,16 +83,16 @@ public class DealerMenu {
         System.out.print("Enter Borrower ID: ");
         String guyId = scan.nextLine().trim();
         ThisGuy guy = myGuys.checkMyGuy(guyId);
-        dealer.showBorrowerHistory(guy);
+        myDealer.showBorrowerHistory(guy);
     }
     private void whereHasTheStuffBeen() {
         System.out.print("Enter Material ID: ");
         String stuffId = scan.nextLine().trim();
         ThisStuff stuff = myPiles.findThisStuff(stuffId);
-        dealer.showMaterialHistory(stuff);
+        myDealer.showMaterialHistory(stuff);
     }
     private void showEveryDeals() {
-        List<TheDeal> deals = dealer.getAllTransactions();
+        List<TheDeal> deals = myDealer.getAllTransactions();
         if(deals.isEmpty()) {
             System.out.println("No transactions yet.");
             return;

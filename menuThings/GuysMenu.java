@@ -6,8 +6,6 @@ import java.util.Scanner;
 import theGuy.MultipleGuys;
 import theGuy.ThisGuy;
 
-
-
 public class GuysMenu {
     private MultipleGuys myGuys;
     private Scanner sc;
@@ -17,7 +15,7 @@ public class GuysMenu {
         this.sc = sc;
     }
 
-    public void showMenu(){
+    public void showMenuDealer(){
         int YourPick = 0;
 
         while (YourPick != 6){
