@@ -27,7 +27,8 @@ public class StuffMenu {
             System.out.println("[2] Edit Material");
             System.out.println("[3] Delete Material");
             System.out.println("[4] View Material");
-            System.out.println("[5] Back");
+            System.out.println("[5] View All Materials");
+            System.out.println("[6] Back");
             System.out.print("Choose: ");
 
             try{
