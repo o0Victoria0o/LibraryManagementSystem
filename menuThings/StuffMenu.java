@@ -22,7 +22,7 @@ public class StuffMenu {
         int YourPick = 0;
 
         do {
-            System.out.println("ASSET MENU");
+            System.out.println("------Material Menu------");
             System.out.println("[1] Add Material");
             System.out.println("[2] Edit Material");
             System.out.println("[3] Delete Material");
