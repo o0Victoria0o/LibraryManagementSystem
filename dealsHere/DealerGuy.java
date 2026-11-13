@@ -67,7 +67,17 @@ public class DealerGuy {
         }
         System.out.println("No active borrower record for this material.");
         return false;
+        }
+    
+    public boolean hasActiveDeal(ThisGuy guy){
+        for (TheDeal d : deals){
+            if (d.getGuy().getGuyId().equals(guy.getGuyId()) && d.getDateReturned() == null){
+                return true; //note, essentially says it has ongoing deal for one guy
+            }
+        }
+        return false;
     }
+
     public void showBorrowerHistory(ThisGuy guy) {
         if (guy == null){
             System.out.println("Borrower not registered.");
@@ -90,6 +100,9 @@ public class DealerGuy {
                 printTransaction(d);
             }
         }
+    }
+    public void addLoadedDeal(TheDeal deal) {
+       deals.add(deal);
     }
 
     public List<TheDeal> getAllTransactions() {

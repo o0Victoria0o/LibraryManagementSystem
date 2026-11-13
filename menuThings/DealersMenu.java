@@ -27,7 +27,7 @@ public class DealersMenu {
             System.out.println();
             System.out.println("TRANSACTION MENU");
             System.out.println("1. Borrow materials");
-            System.out.println("2. return materiasl");
+            System.out.println("2. return materials");
             System.out.println("3. show borrower history");
             System.out.println("4. show material history");
             System.out.println("5. show all transactions");
@@ -66,7 +66,7 @@ public class DealersMenu {
         }
     }
     private void giveItBack() {
-        System.out.print("Enter Borrowwe ID: ");
+        System.out.print("Enter Borrowwer ID: ");
         String guyId = scan.nextLine().trim();
         System.out.print("Enter Material ID: ");
         String stuffId = scan.nextLine().trim();

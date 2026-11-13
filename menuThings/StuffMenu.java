@@ -9,16 +9,16 @@ import theStuff.PileOfStuff;
 import theStuff.RandomBook;
 import theStuff.ThisStuff;
 
-public class AssetMenu {
+public class StuffMenu {
     private Scanner sc = new Scanner(System.in);
     private PileOfStuff listOfAsset = new PileOfStuff();
 
-    public AssetMenu(Scanner sc, PileOfStuff listOfAsset){
+    public StuffMenu(Scanner sc, PileOfStuff listOfAsset){
         this.sc = sc;
         this.listOfAsset = listOfAsset;
     }
 
-    public void showMenuAsset() {
+    public void showMenuStuff() {
         int YourPick = 0;
 
         do {
@@ -33,7 +33,7 @@ public class AssetMenu {
             try{
             YourPick = Integer.parseInt(sc.nextLine().trim());
             }catch(NumberFormatException invalidPick){
-                System.out.println("(1-5) Only");
+                System.out.println("(1-6) Only");
                 continue;
             }
 
@@ -134,12 +134,8 @@ public class AssetMenu {
         listOfAsset.addThisStuff(thisSpecificStuff);;
         System.out.println("Material added successfully");
         
-
-        if (totalCopies <= 0) {
-            System.out.println("Invalid number of copies!");
-            return;
-        }
     }
+    
     public void viewAsset() {
         System.out.print("Enter Material ID: ");
         String stuffId = sc.nextLine().trim();

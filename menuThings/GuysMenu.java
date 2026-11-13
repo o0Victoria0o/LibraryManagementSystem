@@ -1,6 +1,7 @@
 package menuThings;
 
 import bawalViolator.CheckHomie;
+import dealsHere.DealerGuy;
 import java.util.List;
 import java.util.Scanner;
 import theGuy.MultipleGuys;
@@ -9,13 +10,15 @@ import theGuy.ThisGuy;
 public class GuysMenu {
     private MultipleGuys myGuys;
     private Scanner sc;
+    private DealerGuy myDealer;
 
-    public GuysMenu(MultipleGuys myGuys, Scanner sc){
+    public GuysMenu(MultipleGuys myGuys, DealerGuy myDealer, Scanner sc){
         this.myGuys = myGuys;
+        this.myDealer = myDealer;
         this.sc = sc;
     }
 
-    public void showMenuDealer(){
+    public void showMenuGuys(){
         int YourPick = 0;
 
         while (YourPick != 6){
@@ -181,6 +184,13 @@ public void editGuy() {
         System.out.println("Invalid, blank Id");
         return;
     }
+    
+    ThisGuy guyToRemove = myGuys.checkMyGuy(id);
+    if (myDealer.hasActiveDeal(guyToRemove)){
+        System.out.println("Can not remove borrower");
+        System.out.println("Still has unreturned material");
+        return;
+    }
     if (myGuys.eraseMyGuy(id)){
         System.out.println("Borrower removed");
     }
@@ -230,6 +240,7 @@ public void editGuy() {
         System.out.println("Contact Number: " + thisGuyToFind.getContactNumber());
         System.out.println("Email: " + thisGuyToFind.getEmail());
         System.out.println("Address: " + thisGuyToFind.getAddress());
+        System.out.println("Strikes: " + thisGuyToFind.getStrikes());
     }
 
     private String readName(String prompt){
