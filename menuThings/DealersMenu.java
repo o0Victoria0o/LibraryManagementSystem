@@ -26,12 +26,12 @@ public class DealersMenu {
         while (!YourPick.equals("6")) {
             System.out.println();
             System.out.println("-----Transaction Menu-----");
-            System.out.println("1. Borrow materials");
-            System.out.println("2. return materials");
-            System.out.println("3. show borrower history");
-            System.out.println("4. show material history");
-            System.out.println("5. show all transactions");
-            System.out.println("6. Back");
+            System.out.println("[1] Borrow materials");
+            System.out.println("[2] Return materials");
+            System.out.println("[3] Show borrower history");
+            System.out.println("[4] Show material history");
+            System.out.println("[5] Show all transactions");
+            System.out.println("[6] Back");
             System.out.println("Choose: ");
             YourPick = scan.nextLine().trim();
             

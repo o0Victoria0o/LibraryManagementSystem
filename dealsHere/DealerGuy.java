@@ -83,6 +83,10 @@ public class DealerGuy {
             System.out.println("Borrower not registered");
             return;
         }
+        if (!guyHasHistory(guy)){
+            System.out.println("No material history");
+            return;
+        }
         for (TheDeal d: deals){
             if (d.getGuy().getGuyId().equals(guy.getGuyId())){
                 printTransaction(d);
@@ -90,9 +94,14 @@ public class DealerGuy {
             }
         }
 
+
     public void showMaterialHistory(ThisStuff stuff) {
         if (stuff == null) {
             System.out.println("No Material Found.");
+            return;
+        }
+        if (!stuffHasHistory(stuff)){
+            System.out.println("No material history");
             return;
         }
         for (TheDeal d: deals){
@@ -100,11 +109,34 @@ public class DealerGuy {
                 printTransaction(d);
             }
         }
+
     }
     public void addLoadedDeal(TheDeal deal) {
        deals.add(deal);
     }
+    public boolean guyHasHistory(ThisGuy theGuy){
+        if (theGuy == null){
+            return false;
+        }
+        for (TheDeal d : deals){
+            if (d.getGuy().getGuyId().equals(theGuy.getGuyId())){
+                return true;
+                }
+        }
+        return false;
+    }
 
+    public boolean stuffHasHistory(ThisStuff theStuff){
+        if (theStuff == null){
+            return false;
+        }
+        for (TheDeal d : deals){
+            if (d.getStuff().getStuffId().equals(theStuff.getStuffId())){
+                return true;
+                }
+        }
+        return false;
+    }
     public List<TheDeal> getAllTransactions() {
         return new ArrayList<>(deals);
     }
