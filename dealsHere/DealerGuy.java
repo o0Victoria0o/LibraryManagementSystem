@@ -12,27 +12,27 @@ public class DealerGuy {
     private ArrayList<TheDeal> deals = new ArrayList<TheDeal>();
     public boolean borrowMaterial(ThisGuy guy, ThisStuff stuff) {
         if (guy == null){
-            System.out.println("Borrower is not registered.");
+            System.out.println("Borrower not registered");
             return false;
         }
         if(stuff== null){
-            System.out.println("Material not found.");
+            System.out.println("Material not found");
             return false;
         }
 
         if (guy.getStrikes() >= 3) {
-            System.out.println("Borrower has 3 or more strikes. Cannot borrow.");
+            System.out.println("Borrower has 3 or more strikes. Cannot borrow");
             return false;
         }
         if (stuff.getAvailableCopies() <= 0){
-            System.out.println("Material is not available.");
+            System.out.println("Material is not available");
             return false;
         }
 
         for (TheDeal d: deals){
             if (d.getGuy().getGuyId().equals(guy.getGuyId())
                 && d.getDateReturned() == null){
-                System.out.println("Can only borrow one material at a time.");
+                System.out.println("Can only borrow one material at a time");
                 return false;
                 }
         }
@@ -44,11 +44,11 @@ public class DealerGuy {
 
     public boolean returnMaterial(ThisGuy guy, ThisStuff stuff) {
         if (guy == null){
-            System.out.println("Borrower is not registered.");
+            System.out.println("Borrower is not registered");
             return false;
         }
         if(stuff== null){
-            System.out.println("Material not found.");
+            System.out.println("Material not found");
             return false;
         }
 
@@ -65,7 +65,7 @@ public class DealerGuy {
             return true;
             }
         }
-        System.out.println("No active borrower record for this material.");
+        System.out.println("No active borrower record for this material");
         return false;
         }
     
@@ -80,7 +80,7 @@ public class DealerGuy {
 
     public void showBorrowerHistory(ThisGuy guy) {
         if (guy == null){
-            System.out.println("Borrower not registered.");
+            System.out.println("Borrower not registered");
             return;
         }
         for (TheDeal d: deals){

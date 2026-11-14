@@ -22,19 +22,20 @@ public class GuysMenu {
         int YourPick = 0;
 
         while (YourPick != 6){
-        System.out.println("-------Guys Menu-------");
-        System.out.println("1. Add borrower");
-        System.out.println("2. Edit borrower");
-        System.out.println("3. Remove borrower");
-        System.out.println("4. View borrower");
-        System.out.println("5. View all borrowers");
-        System.out.println("6. Back");
+        System.out.println();
+        System.out.println("-------Borrower Menu-------");
+        System.out.println("[1] Add borrower");
+        System.out.println("[2] Edit borrower");
+        System.out.println("[3] Remove borrower");
+        System.out.println("[4] View borrower");
+        System.out.println("[5] View all borrowers");
+        System.out.println("[6] Back");
         System.out.print("Choose: ");
         
         try{
             YourPick = Integer.parseInt(sc.nextLine().trim());
         } catch (NumberFormatException invalidPick){
-            System.out.println("Invalid input. (1-6) only");
+            System.out.println("Invalid, (1-6) only");
             continue;
             }
 
@@ -55,21 +56,23 @@ public class GuysMenu {
                 viewAllGuys();
                 break;
             case 6:
-                System.out.println("Returning to main menu");
+                System.out.println("Returning to borrower menu");
                 break;
             default:
-                System.out.println("Invalid input. (1-6) only");
+                System.out.println("Invalid, (1-6) only");
                 break;
             }
         }
     }
 
     private void addNewGuy(){
-    System.out.println("Borrower Id: ");
+    System.out.println();
+    System.out.println("-----Add Borrower-----");
+    System.out.print("Borrower ID: ");
     String id = sc.nextLine().trim();
 
     if (id.isEmpty()){
-        System.out.println("Invalid, blank Id");
+        System.out.println("Invalid, blank ID");
         return;
     }
     if (myGuys.checkMyGuy(id) != null){
@@ -81,14 +84,14 @@ public class GuysMenu {
         String middleName = readName("Enter middle name: ");
         String lastName = readName("Enter last name: ");
 
-        System.out.println("Enter gender: ");
+        System.out.print("Enter gender: ");
         String gender = sc.nextLine().trim();
 
         String bday = readBday();
         String contact = readContact();
         String email = readEmail();
 
-        System.out.println("Enter address: ");
+        System.out.print("Enter address: ");
         String address = sc.nextLine().trim();
 
         ThisGuy newGuy = new ThisGuy(id, firstName, middleName, lastName, 
@@ -102,92 +105,97 @@ public class GuysMenu {
     }
 
 public void editGuy() {
-    System.out.println("Borrower Id: ");
+    System.out.println();
+    System.out.println("-----Edit Borrower-----");
+
+    System.out.print("Borrower ID: ");
     String id = sc.nextLine().trim();
 
     ThisGuy guyToEdit = myGuys.checkMyGuy(id);
     if (guyToEdit == null) {
-        System.out.println("Borrower not found.");
+        System.out.println("No borrower matching ID");
         return;
     }
+    System.out.println();
+    System.out.println("-----Edit Details-----");
+    System.out.println("[1] First Name");
+    System.out.println("[2] Middle Name");
+    System.out.println("[3]Last Name");
+    System.out.println("[4] Gender");
+    System.out.println("[5] Birthday");
+    System.out.println("[6] Contact Number");
+    System.out.println("[7] Email");
+    System.out.println("[8] Address");
+    System.out.println("[9] Back");
 
-    System.out.println("-----Edit Borrower-----");
-    System.out.println("1. First Name");
-    System.out.println("2. Middle Name");
-    System.out.println("3. Last Name");
-    System.out.println("4. Gender");
-    System.out.println("5. Birthday");
-    System.out.println("6. Contact Number");
-    System.out.println("7. Email");
-    System.out.println("8. Address");
-    System.out.println("9. Back");
-
-    System.out.println("Choose: ");
+    System.out.print("Choose: ");
     int choice;
 
     try{
     choice = Integer.parseInt(sc.nextLine().trim());
     } catch (NumberFormatException invalidPick){
-        System.out.println("Invalid input. (1-9) only");
+        System.out.println("Invalid, (1-9) only");
         return;
     }
 
     switch (choice){
         case 1:
             guyToEdit.setFirstName(readName("Enter new first name: "));
-            System.out.println("First name updated.");
+            System.out.println("First name updated");
             break;
         case 2:
             guyToEdit.setMiddleName(readName("Enter new middle name: "));
-            System.out.println("Middle name updated.");
+            System.out.println("Middle name updated");
             break;
         case 3:
             guyToEdit.setLastName(readName("Enter new last name: "));
-            System.out.println("Last name updated.");
+            System.out.println("Last name updated");
             break;
         case 4:
-            System.out.println("Enter new gender: ");
+            System.out.print("Enter new gender: ");
             guyToEdit.setGender(sc.nextLine().trim());
-            System.out.println("Gender updated.");
+            System.out.println("Gender updated");
             break;
         case 5:
             guyToEdit.setBday(readBday());
-            System.out.println("Birthday updated.");
+            System.out.println("Birthday updated");
             break;
         case 6:
             guyToEdit.setContactNumber(readContact());
-            System.out.println("Contact number updated.");
+            System.out.println("Contact number updated");
             break;
         case 7:
             guyToEdit.setEmail(readEmail());
-            System.out.println("Email updated.");
+            System.out.println("Email updated");
             break;
         case 8:
-            System.out.println("Enter new address: ");
+            System.out.print("Enter new address: ");
             guyToEdit.setAddress(sc.nextLine().trim());
-            System.out.println("Address updated.");
+            System.out.println("Address updated");
             break;
         case 9:
             System.out.println("Returning to main menu");
             break;
         default:
-            System.out.println("Invalid input. (1-9) only");
+            System.out.println("Invalid, (1-9) only");
             break;
         }
     }
 
     private void removeGuy(){
-    System.out.println("Borrower Id: ");
+    System.out.println();
+    System.out.println("-----Remove Borrower-----");
+    System.out.print("Borrower ID: ");
     String id = sc.nextLine().trim();
 
     if (id.isEmpty()){
-        System.out.println("Invalid, blank Id");
+        System.out.println("Invalid, blank ID");
         return;
     }
     
     ThisGuy guyToRemove = myGuys.checkMyGuy(id);
     if (myDealer.hasActiveDeal(guyToRemove)){
-        System.out.println("Can not remove borrower");
+        System.out.println("Cannot remove borrower");
         System.out.println("Still has unreturned material");
         return;
     }
@@ -195,24 +203,26 @@ public void editGuy() {
         System.out.println("Borrower removed");
     }
     else{
-        System.out.println("No borrower matching Id");
+        System.out.println("No borrower matching ID");
         return;
     }
 
     }
 
     private void viewGuy(){
-    System.out.println("Borrower Id: ");
+    System.out.println();
+    System.out.println("-----View Borrower-----");
+    System.out.print("Borrower ID: ");
     String id = sc.nextLine().trim();
 
     ThisGuy guyToFind = myGuys.checkMyGuy(id);
 
     if (id.isEmpty()){
-        System.out.println("Invalid, blank Id");
+        System.out.println("Invalid, blank ID");
         return;
     }
     if (guyToFind == null){
-        System.out.println("No borrower matching Id");
+        System.out.println("No borrower matching ID");
         return;
     }
     showTheGuy(guyToFind);
@@ -221,9 +231,11 @@ public void editGuy() {
     private void viewAllGuys(){
         List<ThisGuy> allGuys = myGuys.getMyGuys();
         if (allGuys.isEmpty()){
-            System.out.println("No borrowers yet.");
+            System.out.println("No borrowers yet");
             return;
         }
+    System.out.println();
+    System.out.println("-----All Borrowers-----");
         for (ThisGuy someDude : allGuys){
             showTheGuy(someDude);
         }
@@ -232,8 +244,9 @@ public void editGuy() {
 
     
     private void showTheGuy(ThisGuy thisGuyToFind){
-        System.out.println("---Borrower Details---");
-        System.out.println("Borrower Id: " + thisGuyToFind.getGuyId());
+        System.out.println();
+        System.out.println("-----Borrower Details-----");
+        System.out.println("Borrower ID: " + thisGuyToFind.getGuyId());
         System.out.println("Name: " + thisGuyToFind.getFirstName() + " " + thisGuyToFind.getMiddleName() + " " + thisGuyToFind.getLastName());
         System.out.println("Gender: " + thisGuyToFind.getGender());
         System.out.println("Birthday: " + thisGuyToFind.getBday());
@@ -246,11 +259,11 @@ public void editGuy() {
     private String readName(String prompt){
         String name;
         do {
-        System.out.println(prompt);
+        System.out.print(prompt);
         name = sc.nextLine().trim();
         if (!CheckHomie.isValidName(name)){
             System.out.println("Invalid name");
-            System.out.println("(A-Zm,'-.) only");
+            System.out.println("(A-Z,'-.) only");
             }
         }while(!CheckHomie.isValidName(name));
         return name;
@@ -260,7 +273,7 @@ public void editGuy() {
         String bday;
 
         do{
-        System.out.println("Enter birthday (YYYY-MM-DD): ");
+        System.out.print("Enter birthday (YYYY-MM-DD): ");
         bday = sc.nextLine().trim();
         if (!CheckHomie.isValidBday(bday)){
             System.out.println("Invalid birthday");
@@ -274,7 +287,7 @@ public void editGuy() {
         String contact;
 
         do{
-        System.out.println("Enter contact number (09XXXXXXXXX): ");
+        System.out.print("Enter contact number (09XXXXXXXXX): ");
         contact = sc.nextLine().trim();
         if (!CheckHomie.isValidContact(contact)){
             System.out.println("Invalid contact number");
@@ -288,7 +301,7 @@ public void editGuy() {
         String email;
 
         do{
-        System.out.println("Enter email: ");
+        System.out.print("Enter email: ");
         email = sc.nextLine().trim();
         if (!CheckHomie.isValidEmail(email)){
             System.out.println("Invalid email");

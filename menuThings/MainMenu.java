@@ -52,6 +52,7 @@ public class MainMenu {
                     break;
                 case 4:
                     System.out.println("Exiting the Program");
+                    break;
                 default:
                     System.out.println("(1-4) Only");
                     break;

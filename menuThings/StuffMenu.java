@@ -22,6 +22,7 @@ public class StuffMenu {
         int YourPick = 0;
 
         do {
+            System.out.println();
             System.out.println("------Material Menu------");
             System.out.println("[1] Add Material");
             System.out.println("[2] Edit Material");
@@ -34,7 +35,7 @@ public class StuffMenu {
             try{
             YourPick = Integer.parseInt(sc.nextLine().trim());
             }catch(NumberFormatException invalidPick){
-                System.out.println("(1-6) Only");
+                System.out.println("Invalid, (1-6) only");
                 continue;
             }
 
@@ -55,15 +56,17 @@ public class StuffMenu {
                     viewAllAssets();
                     break;
                 case 6:
-                    System.out.println("Returning...");
+                    System.out.println("Returning to main menu");
                     break;
                 default:
-                    System.out.println("Invalid pick! Pick from 1-6.");
+                    System.out.println("Invalid, (1-6) only");
             }
         } while (YourPick !=6);
     }
 
     public void addAsset(){
+        System.out.println();
+        System.out.println("-----Add Material-----");
         System.out.println("[1] Book");
         System.out.println("[2] Journal");
         System.out.println("[3] Magazine");
@@ -75,28 +78,28 @@ public class StuffMenu {
         yourPick = Integer.parseInt(sc.nextLine().trim());
         }
         catch(NumberFormatException invalidPick){
-            System.out.println("(1-4) Only");
+            System.out.println("Invalid, (1-4) Only");
             return;
         }
 
         if (yourPick < 1 || yourPick > 4){
-            System.out.println("(1-4) Only");
+            System.out.println("Invalid, (1-4) Only");
             return;
         }
 
         System.out.print("Material ID: ");
         String stuffId = sc.nextLine().trim();
         if (stuffId.isEmpty()){
-            System.out.println("Invalid, blank Id");
+            System.out.println("Invalid, blank ID");
             return;
         }
 
         if (listOfAsset.findThisStuff(stuffId) != null) {
-            System.out.println("Material already exists!");
+            System.out.println("Material already exists");
             return;
         }
 
-        System.out.println("Publisher: ");
+        System.out.print("Publisher: ");
         String publisher = sc.nextLine().trim();
         int yearPublished = readYear();
         int totalCopies = readCopies("Total copies: ");
@@ -129,7 +132,7 @@ public class StuffMenu {
                 break;
 
             default:
-                System.out.println("Invalid material type!");
+                System.out.println("Invalid material type");
                 return;
         }
         listOfAsset.addThisStuff(thisSpecificStuff);;
@@ -138,13 +141,15 @@ public class StuffMenu {
     }
     
     public void viewAsset() {
+        System.out.println();
+        System.out.println("-----View Material-----");
         System.out.print("Enter Material ID: ");
         String stuffId = sc.nextLine().trim();
 
         ThisStuff stuffToView = listOfAsset.findThisStuff(stuffId);
 
         if (stuffToView == null) {
-            System.out.println("Material not found.");
+            System.out.println("Material not found");
             return;
         }
 
@@ -152,37 +157,41 @@ public class StuffMenu {
     }
 
     public void viewAllAssets() {
-        System.out.println("Material List");
         if (listOfAsset.getThisStuffCount() == 0) {
             System.out.println("No materials found!");
             return;
         }
-
+        System.out.println();
+        System.out.println("-----All Materials-----");
         for (ThisStuff thisSpecificStuff : listOfAsset.getAlltheStuff()) {
             showStuffDetails(thisSpecificStuff);
         }
     }
 
     public void deleteAsset() {
-        System.out.println("Enter Material ID: ");
+        System.out.println();
+        System.out.println("-----Remove Material-----");
+        System.out.print("Enter Material ID: ");
         String stuffId = sc.nextLine().trim();
 
         ThisStuff stuffToDelete = listOfAsset.findThisStuff(stuffId);
 
         if(stuffToDelete != null && stuffToDelete.getAvailableCopies() < stuffToDelete.getTotalCopies()){
-            System.out.println("Cannot Delete Material");
+            System.out.println("Cannot remove material");
             System.out.println("Some materials are still borrowed");
             return;
         }
 
         if (listOfAsset.removeThisStuff(stuffId)) {
-            System.out.println("Material deleted.");
+            System.out.println("Material deleted");
         } else {
-            System.out.println("Material not found.");
+            System.out.println("Material not found");
         }
     }
 
     public void editAsset() {
+        System.out.println();
+        System.out.println("-----Edit Material-----");
         System.out.print("Enter Material ID: ");
         String stuffId = sc.nextLine().trim();
 
@@ -193,6 +202,7 @@ public class StuffMenu {
             return;
         }
 
+        System.out.println("-----Edit Details-----");
         System.out.print("New Publisher: ");
         String newPublisher = sc.nextLine().trim();
         int newYear = readYear();
@@ -215,6 +225,9 @@ public class StuffMenu {
     }
 
     private void showStuffDetails(ThisStuff thisSpecificStuff) {
+
+        System.out.println();
+        System.out.println("-----Material Details-----");
         System.out.println("Material ID: " + thisSpecificStuff.getStuffId());
         System.out.println("Type: " + thisSpecificStuff.getType());
         System.out.println("Name: " + thisSpecificStuff.getDisplayName());
@@ -266,7 +279,7 @@ public class StuffMenu {
             name = sc.nextLine().trim();
             if (!CheckHomie.isValidName(name)){
                 System.out.println("Invalid name");
-                System.out.println("(A-z ,.-) Only");
+                System.out.println("(A-Z ,.-) Only");
             }
         } while (!CheckHomie.isValidName(name));
         return name;
