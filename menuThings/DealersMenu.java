@@ -120,7 +120,7 @@ public class DealersMenu {
         System.out.println("-----All Transactions-----");
         for (TheDeal d : deals) {
             String returned;
-            if (d.getDateReturned() ==null) {
+            if (d.getDateReturned() == null) {
                 returned = "Not yet returned";
             }else {
                 returned = d.getDateReturned().toString();
