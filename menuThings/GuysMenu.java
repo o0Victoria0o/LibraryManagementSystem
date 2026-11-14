@@ -288,7 +288,7 @@ public void editGuy() {
         String contact;
 
         do{
-        System.out.println("Enter contact number");
+        System.out.println("Enter contact number below");
         System.out.print("(09XXXXXXXXX): ");
         contact = sc.nextLine().trim();
         if (!CheckHomie.isValidContact(contact)){
@@ -303,7 +303,7 @@ public void editGuy() {
         String email;
 
         do{
-        System.out.println("Enter email address");
+        System.out.println("Enter email address below");
         System.out.print("(email@mail.ph): ");
         email = sc.nextLine().trim();
         if (!CheckHomie.isValidEmail(email)){
