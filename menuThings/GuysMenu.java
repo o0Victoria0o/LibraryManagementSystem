@@ -98,9 +98,9 @@ public class GuysMenu {
         gender, bday, contact, email, address, 0);
 
         if (myGuys.addMyGuy(newGuy)) {
-            System.out.println("Borrower added successfully.");
+            System.out.println("Borrower added successfully");
         } else {
-            System.out.println("Failed to add borrower.");
+            System.out.println("Failed to add borrower");
         }
     }
 
@@ -199,6 +199,18 @@ public void editGuy() {
         System.out.println("Still has unreturned material");
         return;
     }
+
+    if (myDealer.hasActiveDeal(guyToRemove)){
+        System.out.println("Cannot remove borrower");
+        System.out.println("Has unreturned material");
+        return;
+    }
+    if (myDealer.guyHasHistory(guyToRemove)){
+        System.out.println("Cannot remove borrower");
+        System.out.println("Has borrowing history");
+        return;
+    }
+    
     if (myGuys.eraseMyGuy(id)){
         System.out.println("Borrower removed");
     }

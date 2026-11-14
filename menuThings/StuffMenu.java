@@ -1,6 +1,7 @@
 package menuThings;
 
 import bawalViolator.CheckHomie;
+import dealsHere.DealerGuy;
 import java.util.Scanner;
 import theStuff.CollegeThesis;
 import theStuff.DippersJournal;
@@ -8,14 +9,15 @@ import theStuff.ForbiddenMagazine;
 import theStuff.PileOfStuff;
 import theStuff.RandomBook;
 import theStuff.ThisStuff;
-
 public class StuffMenu {
     private Scanner sc = new Scanner(System.in);
     private PileOfStuff listOfAsset = new PileOfStuff();
+    private DealerGuy myDealer = new DealerGuy();
 
-    public StuffMenu(Scanner sc, PileOfStuff listOfAsset){
+    public StuffMenu(Scanner sc, PileOfStuff listOfAsset, DealerGuy myDealer){
         this.sc = sc;
         this.listOfAsset = listOfAsset;
+        this.myDealer = myDealer;
     }
 
     public void showMenuStuff() {
@@ -99,8 +101,7 @@ public class StuffMenu {
             return;
         }
 
-        System.out.print("Publisher: ");
-        String publisher = sc.nextLine().trim();
+        String publisher = readTextForMaterials("Publisher: ");
         int yearPublished = readYear();
         int totalCopies = readCopies("Total copies: ");
 
@@ -108,24 +109,24 @@ public class StuffMenu {
 
         switch (yourPick){
             case 1:
-                System.out.print("Book Title: "); String randomTitle = sc.nextLine();
+                String randomTitle = readTextForMaterials("Book Title: ");
                 String randomAuthor = readName("Author: ");
 
                 thisSpecificStuff = new RandomBook(stuffId, publisher, yearPublished, totalCopies, totalCopies, randomTitle, randomAuthor);
                 break;
 
             case 2:
-                System.out.print("Journal Name: "); String journalTitle = sc.nextLine();
+                String journalTitle = readTextForMaterials("Journal Name: ");
                 thisSpecificStuff = new DippersJournal(stuffId, publisher, yearPublished, totalCopies, totalCopies, journalTitle);
                 break;
 
             case 3:
-                System.out.print("Magazine Name: "); String magazineTitle = sc.nextLine();
+                String magazineTitle = readTextForMaterials("Magazine Name: ");
                 thisSpecificStuff = new ForbiddenMagazine(stuffId, publisher, yearPublished, totalCopies, totalCopies, magazineTitle);
                 break;
 
             case 4: 
-                System.out.print("Thesis Title: "); String thesisTitle = sc.nextLine();
+                String thesisTitle = readTextForMaterials("Thesis Title: ");
                 String thesisAuthor = readName("Author: ");
 
                 thisSpecificStuff = new CollegeThesis(stuffId, publisher, yearPublished, totalCopies, totalCopies, thesisTitle, thesisAuthor);
@@ -135,8 +136,12 @@ public class StuffMenu {
                 System.out.println("Invalid material type");
                 return;
         }
-        listOfAsset.addThisStuff(thisSpecificStuff);;
+        if (listOfAsset.addThisStuff(thisSpecificStuff)){
         System.out.println("Material added successfully");
+        }
+        else{
+        System.out.println("Material not added");
+        }
         
     }
     
@@ -181,6 +186,11 @@ public class StuffMenu {
             System.out.println("Some materials are still borrowed");
             return;
         }
+        if (myDealer.stuffHasHistory(stuffToDelete)){
+            System.out.println("Cannot remove material");
+            System.out.println("Has borrowing history");
+            return;
+        }
 
         if (listOfAsset.removeThisStuff(stuffId)) {
             System.out.println("Material deleted");
@@ -190,38 +200,91 @@ public class StuffMenu {
     }
 
     public void editAsset() {
+    System.out.print("Enter Material ID: ");
+    String stuffId = sc.nextLine().trim();
+
+    ThisStuff thisStuffEdit = listOfAsset.findThisStuff(stuffId);
+
+    if (thisStuffEdit == null) {
+        System.out.println("Material not found");
+        return;
+    }
         System.out.println();
         System.out.println("-----Edit Material-----");
-        System.out.print("Enter Material ID: ");
-        String stuffId = sc.nextLine().trim();
+        System.out.println("[1] Publisher");
+        System.out.println("[2] Year published");
+        System.out.println("[3] Total copies");
+        System.out.println("[4] Title / Name");
+        System.out.println("[5] Author");
+        System.out.println("[6] Back");
+        System.out.print("Choose: ");
 
-        ThisStuff thisStuffEdit = listOfAsset.findThisStuff(stuffId);
+        int choice;
+            try{
+                choice = Integer.parseInt(sc.nextLine().trim());
+            } catch (NumberFormatException invalidPick){
+                System.out.println("Invalid, (1-6) only");
+                return;
+            }   
 
-        if (thisStuffEdit == null) {
-            System.out.println("Material not found.");
-            return;
+        switch (choice){
+            case 1:
+                thisStuffEdit.setPublisher(readTextForMaterials("New publisher: "));
+                System.out.println("Publisher updated");
+                break;
+            case 2:
+                thisStuffEdit.setYearPublished(readYear());
+                System.out.println("Year updated");
+                break;
+            case 3: {
+                int newTotalCopies = readCopies("New total copies: ");
+                int borrowedCopies = thisStuffEdit.getTotalCopies() - thisStuffEdit.getAvailableCopies();
+                if (newTotalCopies < borrowedCopies){
+                    System.out.println("Cannot go below borrowed copies: " + borrowedCopies);
+                    break;
+                }
+                thisStuffEdit.setTotalCopies(newTotalCopies);
+                thisStuffEdit.setAvailableCopies(newTotalCopies - borrowedCopies);
+                System.out.println("Copies updated");
+                break;
+            }
+            case 4:
+                editTitle(thisStuffEdit);
+                break;
+            case 5:
+                editAuthor(thisStuffEdit);
+                break;
+            case 6:
+                break;
+            default:
+                System.out.println("Invalid, (1-6) only");
+                break;
         }
+    }
 
-        System.out.println("-----Edit Details-----");
-        System.out.print("New Publisher: ");
-        String newPublisher = sc.nextLine().trim();
-        int newYear = readYear();
-        int newTotalCopies = readCopies("New total copies: ");
-        
-        int borrowedCopies = thisStuffEdit.getTotalCopies() - thisStuffEdit.getAvailableCopies();
-
-        if (newTotalCopies < borrowedCopies){
-            System.out.println("Cannot go below borrowed copies: " + borrowedCopies);
-            System.out.println("Edit not continued");
-            return;
+    private void editTitle(ThisStuff thisStuffEdit){
+        if (thisStuffEdit instanceof RandomBook){
+            ((RandomBook) thisStuffEdit).setRandomTitle(readTextForMaterials("New book title: "));
+        } else if (thisStuffEdit instanceof CollegeThesis){
+            ((CollegeThesis) thisStuffEdit).setTitle(readTextForMaterials("New thesis title: "));
+        } else if (thisStuffEdit instanceof DippersJournal){
+            ((DippersJournal) thisStuffEdit).setJournalTitle(readTextForMaterials("New journal name: "));
+        } else if (thisStuffEdit instanceof ForbiddenMagazine){
+            ((ForbiddenMagazine) thisStuffEdit).setMagazineIssue(readTextForMaterials("New magazine name: "));
         }
+        System.out.println("Title updated");
+    }
 
-        thisStuffEdit.setPublisher(newPublisher);
-        thisStuffEdit.setYearPublished(newYear);
-        thisStuffEdit.setTotalCopies(newTotalCopies);
-        thisStuffEdit.setAvailableCopies(newTotalCopies - borrowedCopies);
-        System.out.println("Materials updated");
-
+    private void editAuthor(ThisStuff thisStuffEdit){
+        if (thisStuffEdit instanceof RandomBook){
+            ((RandomBook) thisStuffEdit).setRandomAuthor(readName("New author: "));
+            System.out.println("Author updated");
+        } else if (thisStuffEdit instanceof CollegeThesis){
+            ((CollegeThesis) thisStuffEdit).setAuthor(readName("New author: "));
+            System.out.println("Author updated");
+        } else {
+            System.out.println("This material has no author");
+        }
     }
 
     private void showStuffDetails(ThisStuff thisSpecificStuff) {
@@ -283,6 +346,18 @@ public class StuffMenu {
             }
         } while (!CheckHomie.isValidName(name));
         return name;
+    }
+
+    private String readTextForMaterials(String prompt){
+        String input;
+        do { 
+            System.out.println(prompt);
+            input = sc.nextLine().trim();
+                if (input.isEmpty()){
+                    System.out.println("Cannot be blank");
+                }
+        } while (input.isEmpty());
+        return input;
     }
 }
 

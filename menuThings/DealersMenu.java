@@ -32,7 +32,7 @@ public class DealersMenu {
             System.out.println("[4] Show material history");
             System.out.println("[5] Show all transactions");
             System.out.println("[6] Back");
-            System.out.println("Choose: ");
+            System.out.print("Choose: ");
             YourPick = scan.nextLine().trim();
             
             if (YourPick.equals("1")) {
@@ -64,11 +64,17 @@ public class DealersMenu {
         boolean done = myDealer.borrowMaterial(guy, stuff);
         if (done){
             System.out.println("Borrowed: " + stuff.getDisplayName());
-            if (stuff.getBorrowDuration() > 1){
-            System.out.println("Borrow duration: " + stuff.getBorrowDuration() + "days");
+            
+            int returnTime = stuff.getBorrowDuration();
+
+            if (returnTime == 0){
+                System.out.println("Return today");
+            }
+            else if (returnTime == 1){
+                System.out.println("Borrow duration: 1 day");
             }
             else{
-            System.out.println("Borrow duration: " + stuff.getBorrowDuration() + "day");
+                System.out.println("Borrow duration: " + returnTime + " days");
             }
         }
     }

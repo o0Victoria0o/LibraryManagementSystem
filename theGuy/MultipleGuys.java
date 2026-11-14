@@ -12,7 +12,12 @@ public boolean addMyGuy (ThisGuy newGuy) {
     } for (ThisGuy oldGuy : myGuys) {
         if (oldGuy.getGuyId().equals(newGuy.getGuyId())) {
         return false;
-        } 
+        }
+        if (oldGuy.getFirstName().equalsIgnoreCase(newGuy.getFirstName())
+        && oldGuy.getLastName().equalsIgnoreCase(newGuy.getLastName())
+        && oldGuy.getBday().equals(newGuy.getBday())){
+            return false;
+        }
     }
     myGuys.add(newGuy);
     return true;

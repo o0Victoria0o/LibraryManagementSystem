@@ -14,7 +14,14 @@ public class PileOfStuff{
         if (findThisStuff(ThisStuff.getStuffId()) != null) {
             return false;
         }
-
+        for (ThisStuff oldStuff : theStuff){
+        if (oldStuff.getType().equals(ThisStuff.getType())
+            && oldStuff.getDisplayName().equalsIgnoreCase(ThisStuff.getDisplayName())
+            && oldStuff.getPublisher().equalsIgnoreCase(ThisStuff.getPublisher())
+            && oldStuff.getYearPublished() == ThisStuff.getYearPublished()){
+            return false;
+        }
+    }
         theStuff.add(ThisStuff);
         return true;
     }

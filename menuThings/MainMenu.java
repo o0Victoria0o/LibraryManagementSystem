@@ -19,7 +19,7 @@ public class MainMenu {
         TakeCareofHomie.loadTheDeals(myDealer, myGuys, myPiles);
 
         GuysMenu theGuysMenu = new GuysMenu(myGuys, myDealer, sc);
-        StuffMenu theStuffsMenu = new StuffMenu(sc, myPiles);
+        StuffMenu theStuffsMenu = new StuffMenu(sc, myPiles, myDealer);
         DealersMenu theDealersMenu = new DealersMenu(myDealer, myGuys, myPiles, sc);
 
         int YourPick = 0;
@@ -37,7 +37,7 @@ public class MainMenu {
             try {
                 YourPick = Integer.parseInt(sc.nextLine().trim());
             } catch (NumberFormatException invalidPick) {
-                System.out.println("(1-4) Only");
+                System.out.println("Invalid (1-4) Only");
                 continue;
             }
 

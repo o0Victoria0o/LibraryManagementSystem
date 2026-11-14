@@ -70,6 +70,9 @@ public class DealerGuy {
         }
     
     public boolean hasActiveDeal(ThisGuy guy){
+        if (guy == null){
+            return false;
+        }
         for (TheDeal d : deals){
             if (d.getGuy().getGuyId().equals(guy.getGuyId()) && d.getDateReturned() == null){
                 return true; //note, essentially says it has ongoing deal for one guy

@@ -8,7 +8,7 @@ public class CheckHomie {
         if (name == null || name.trim().isEmpty()) {
             return false;
         }
-        return name.matches("[A-Za-z .'-]+");
+        return name.matches("[\\p{L} .'-]+");
     }
 
     public static boolean isValidContact(String contactNumber) {
