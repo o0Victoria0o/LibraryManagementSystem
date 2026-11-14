@@ -120,7 +120,7 @@ public void editGuy() {
     System.out.println("-----Edit Details-----");
     System.out.println("[1] First Name");
     System.out.println("[2] Middle Name");
-    System.out.println("[3]Last Name");
+    System.out.println("[3] Last Name");
     System.out.println("[4] Gender");
     System.out.println("[5] Birthday");
     System.out.println("[6] Contact Number");
