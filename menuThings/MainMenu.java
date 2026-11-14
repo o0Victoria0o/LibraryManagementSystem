@@ -25,6 +25,7 @@ public class MainMenu {
         int YourPick = 0;
 
         while (YourPick !=4){
+            System.out.println();
             System.out.println("--------Main Menu--------");
             System.out.println("[1] Borrower Management");
             System.out.println("[2] Material Management");

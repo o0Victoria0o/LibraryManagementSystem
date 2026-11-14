@@ -273,7 +273,8 @@ public void editGuy() {
         String bday;
 
         do{
-        System.out.print("Enter birthday (YYYY-MM-DD): ");
+        System.out.println("Enter birthday below");
+        System.out.print("(YYYY-MM-DD): ");
         bday = sc.nextLine().trim();
         if (!CheckHomie.isValidBday(bday)){
             System.out.println("Invalid birthday");
@@ -287,7 +288,8 @@ public void editGuy() {
         String contact;
 
         do{
-        System.out.print("Enter contact number (09XXXXXXXXX): ");
+        System.out.println("Enter contact number");
+        System.out.print("(09XXXXXXXXX): ");
         contact = sc.nextLine().trim();
         if (!CheckHomie.isValidContact(contact)){
             System.out.println("Invalid contact number");
@@ -301,7 +303,8 @@ public void editGuy() {
         String email;
 
         do{
-        System.out.print("Enter email: ");
+        System.out.println("Enter email address");
+        System.out.print("(email@mail.ph): ");
         email = sc.nextLine().trim();
         if (!CheckHomie.isValidEmail(email)){
             System.out.println("Invalid email");
