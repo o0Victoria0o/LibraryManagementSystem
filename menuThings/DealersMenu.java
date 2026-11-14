@@ -75,7 +75,7 @@ public class DealersMenu {
     private void giveItBack() {
         System.out.println();
         System.out.println("-----Return Material-----");
-        System.out.print("Enter Borrowwer ID: ");
+        System.out.print("Enter Borrower ID: ");
         String guyId = scan.nextLine().trim();
         System.out.print("Enter Material ID: ");
         String stuffId = scan.nextLine().trim();
