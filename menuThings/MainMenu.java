@@ -52,6 +52,13 @@ public class MainMenu {
                     theDealersMenu.showMenuDealer();
                     break;
                 case 4:
+                    System.out.println();
+                    System.out.println("Group: Panic at The Cisco");
+                    System.out.println("Members:");
+                    System.out.println("Victoria, Asher Nathan P.");
+                    System.out.println("Espinosa, John Paul J.");
+                    System.out.println("Siruno, Lorraine Ann E.");
+                    System.out.println("Yasay, Marian Ashley A.");
                     System.out.println("Exiting the Program");
                     break;
                 default:

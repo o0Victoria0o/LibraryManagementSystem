@@ -81,7 +81,7 @@ public class GuysMenu {
     }
 
         String firstName = readName("Enter first name: ");
-        String middleName = readName("Enter middle name: ");
+        String middleName = readMiddleName("Enter middle name: ");
         String lastName = readName("Enter last name: ");
 
         System.out.print("Enter gender: ");
@@ -309,7 +309,17 @@ public void editGuy() {
             }
         }while(!CheckHomie.isValidContact(contact));
         return contact;
-    }   
+    }
+    //Suggested by claude
+    private String readMiddleName(String prompt){
+        String middleName;
+
+        do { 
+            System.out.print(prompt);
+            middleName = sc.nextLine().trim();
+        } while (!middleName.isEmpty() && !CheckHomie.isValidName(middleName));
+        return middleName.isEmpty() ? "N/A" : middleName;
+    }
 
     private String readEmail(){
         String email;
